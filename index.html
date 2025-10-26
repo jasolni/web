@@ -1,161 +1,279 @@
+
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>Juan Alberto Salazar Rebolledo — Cultural Manager & Consultant</title>
+		<title>Juan Alberto Salazar Rebolledo — Portfolio & CV</title>
 		<style>
-			:root{--bg:#f6f7fb;--card:#fff;--accent:#0b6d8f;--muted:#6b7280}
-			html,body{height:100%}
-			body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); margin:0; color:#0f172a}
-			.container{max-width:900px;margin:36px auto;padding:28px}
-			.card{background:var(--card);border-radius:12px;padding:28px;box-shadow:0 6px 22px rgba(15,23,42,0.06)}
-			header{display:flex;gap:20px;align-items:center}
-			.avatar{width:110px;height:110px;border-radius:12px;flex:0 0 110px;background:linear-gradient(135deg,var(--accent),#7bdff6);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:32px}
-			h1{margin:0;font-size:26px}
-			.subtitle{color:var(--muted);margin-top:6px}
-			.meta{margin-left:auto;text-align:right;color:var(--muted)}
-			.section{margin-top:22px}
-			h2{font-size:16px;margin:0 0 10px 0}
-			.list{display:grid;gap:12px}
-			.item{padding:12px;border-radius:8px;background:linear-gradient(180deg,rgba(11,109,143,0.03),transparent)}
-			.role{font-weight:600}
-			.muted{color:var(--muted);font-size:13px}
-			footer{margin-top:20px;text-align:center;color:var(--muted);font-size:13px}
-			@media (max-width:640px){header{flex-direction:row} .meta{display:none}}
+			:root {
+				--bg: #fff;
+				--accent: #111;
+				--muted: #6b7280;
+				--tab: #f2f2f2;
+				--tab-active: #111;
+				--tab-text: #222;
+				--tab-active-text: #fff;
+				--border: #e5e5e5;
+				--font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			}
+			html, body { height: 100%; }
+			body {
+				font-family: var(--font);
+				background: var(--bg);
+				margin: 0;
+				color: var(--accent);
+				min-height: 100vh;
+			}
+			.main {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 0 0 40px 0;
+			}
+			.nav {
+				display: flex;
+				justify-content: center;
+				background: var(--tab);
+				border-bottom: 2px solid var(--border);
+				margin-bottom: 0;
+			}
+			.nav-btn {
+				font-family: var(--font);
+				font-size: 16px;
+				padding: 18px 32px;
+				background: none;
+				border: none;
+				color: var(--tab-text);
+				cursor: pointer;
+				transition: background 0.2s, color 0.2s;
+				outline: none;
+			}
+			.nav-btn.active {
+				background: var(--tab-active);
+				color: var(--tab-active-text);
+				font-weight: bold;
+			}
+			.content {
+				background: #fff;
+				border-radius: 0 0 12px 12px;
+				box-shadow: 0 6px 22px rgba(15,23,42,0.06);
+				padding: 36px 32px 32px 32px;
+				margin-top: 0;
+			}
+			.header {
+				display: flex;
+				align-items: center;
+				gap: 32px;
+				margin-bottom: 24px;
+			}
+			.avatar {
+				width: 120px;
+				height: 120px;
+				border-radius: 12px;
+				background: #111;
+				color: #fff;
+				font-size: 40px;
+				font-weight: bold;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+			}
+			.header-info h1 {
+				font-size: 2.2rem;
+				margin: 0 0 8px 0;
+				font-weight: 700;
+				letter-spacing: -1px;
+			}
+			.header-info .subtitle {
+				color: var(--muted);
+				font-size: 1.1rem;
+				margin-bottom: 6px;
+			}
+			.header-info .meta {
+				color: var(--muted);
+				font-size: 0.95rem;
+			}
+			.header-links {
+				margin-left: auto;
+				text-align: right;
+				font-size: 0.95rem;
+			}
+			.header-links a {
+				color: #111;
+				text-decoration: underline;
+				margin-left: 8px;
+			}
+			@media (max-width: 700px) {
+				.main { padding: 0; }
+				.content { padding: 18px 8px 18px 8px; }
+				.header { flex-direction: column; gap: 12px; }
+				.avatar { width: 80px; height: 80px; font-size: 28px; }
+				.header-info h1 { font-size: 1.3rem; }
+			}
 		</style>
+		<script>
+			function showTab(tab) {
+				document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+				document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+				document.getElementById(tab).style.display = 'block';
+				document.getElementById('btn-' + tab).classList.add('active');
+			}
+			window.onload = function() {
+				showTab('es');
+			};
+		</script>
 	</head>
 	<body>
-		<div class="container">
-			<div class="card">
-				<header>
-					<div class="avatar" aria-hidden="true">JASR</div>
-					<div>
+		<div class="main">
+			<nav class="nav">
+				<button class="nav-btn" id="btn-es" onclick="showTab('es')">ES</button>
+				<button class="nav-btn" id="btn-en" onclick="showTab('en')">EN</button>
+				<button class="nav-btn" id="btn-pdf" onclick="showTab('pdf')">PDF CV</button>
+				<button class="nav-btn" id="btn-portfolio" onclick="showTab('portfolio')">Portafolio</button>
+			</nav>
+			<div class="content">
+				<div class="header">
+					<div class="avatar">JASR</div>
+					<div class="header-info">
 						<h1>Juan Alberto Salazar Rebolledo</h1>
-						<div class="subtitle">Cultural Manager & Consultant · Investigador · Data Science Student</div>
-						<div class="muted">Madrid, España · Disponible para consultoría, gestión cultural y proyectos internacionales</div>
+						<div class="subtitle">Cultural Manager & Consultant · Data Science Student</div>
+						<div class="meta">Madrid, España · <a href="mailto:j.s.rebolledo33@gmail.com">j.s.rebolledo33@gmail.com</a></div>
 					</div>
-					<div class="meta">
-						<div class="muted">Email</div>
-						<div><a href="mailto:j.s.rebolledo33@gmail.com">j.s.rebolledo33@gmail.com</a></div>
-						<div class="muted">LinkedIn</div>
-						<div><a href="https://www.linkedin.com/in/juan-alberto-salazar-rebolledo/" target="_blank">juan-alberto-salazar-rebolledo</a></div>
+					<div class="header-links">
+						<a href="https://www.linkedin.com/in/juan-alberto-salazar-rebolledo/" target="_blank">LinkedIn</a>
+						<a href="https://fu-berlin.academia.edu/JuanAlbertoSalazarRebolledo" target="_blank">Academia.edu</a>
 					</div>
-				</header>
-
-				<section class="section">
-					<h2>Perfil profesional</h2>
-					<p class="muted">Gestor cultural, consultor y académico con experiencia internacional en investigación, mediación, administración y curaduría de proyectos culturales, museográficos y editoriales. Especializado en historia cultural, arte, contraculturas, humanidades digitales y relaciones internacionales. Actualmente cursando el Máster en Data Science, Big Data & Business Analytics (UCM), ampliando competencias en análisis de datos, inteligencia artificial y gestión estratégica de proyectos culturales.</p>
-				</section>
-
-				<section class="section">
-					<h2>Experiencia profesional</h2>
-					<div class="list">
-						<div class="item">
-							<div class="role">Investigador postdoctoral · Freie Universität Berlin</div>
-							<div class="muted">2025</div>
-							<p>Investigación y gestión en el Colegio Internacional de Graduados “Temporalidades del Futuro”. Coordinación de proyectos interdisciplinarios y colaboración internacional.</p>
+				</div>
+						<div id="es" class="tab-content">
+							<h2>Perfil profesional</h2>
+							<p class="muted">Gestor cultural, consultor y académico con experiencia internacional en investigación, mediación, administración y curaduría de proyectos culturales, museográficos y editoriales. Especializado en historia cultural, arte, contraculturas, humanidades digitales y relaciones internacionales. Actualmente cursando el Máster en Data Science, Big Data & Business Analytics (UCM), ampliando competencias en análisis de datos, inteligencia artificial y gestión estratégica de proyectos culturales.</p>
+							<h2>Experiencia profesional</h2>
+							<ul>
+								<li><b>Investigador postdoctoral · Freie Universität Berlin (2025)</b><br>Investigación y gestión en el Colegio Internacional de Graduados “Temporalidades del Futuro”. Coordinación de proyectos interdisciplinarios y colaboración internacional.</li>
+								<li><b>Gestión y mediación cultural · Festival de cine Dokumentale, Berlín (2024)</b><br>Administración, mediación y asuntos editoriales en festival internacional de cine documental.</li>
+								<li><b>Gestión, administración e investigación · Freie Universität Berlin (2022–2025)</b><br>Gestión de proyectos culturales, coordinación de actividades académicas y administrativas.</li>
+								<li><b>Consultor y curador · Centro Cultural Los Pinos (2021)</b><br>Propuesta museográfica y curatorial para exposiciones culturales.</li>
+								<li><b>Investigador · CIESAS / CONACyT (2016–2020)</b><br>Investigación en proyectos sobre representaciones culturales, historia contemporánea y políticas culturales en México y América Latina.</li>
+								<li><b>Desarrollo de contenidos educativos · Historicity Online (2020–2021)</b><br>Planeación y desarrollo de contenidos para plataforma digital de aprendizaje de historia.</li>
+							</ul>
+							<h2>Formación académica</h2>
+							<ul>
+								<li><b>Máster en Data Science, Big Data & Business Analytics</b> — Universidad Complutense de Madrid (2025–2026, en curso)</li>
+								<li><b>Doctorado en Historia (Honores)</b> — Freie Universität Berlin (2025)</li>
+								<li><b>Maestría en Historia (Honores)</b> — UNAM (2021)</li>
+								<li><b>Licenciatura en Historia (Honores)</b> — UNAM (2018)</li>
+								<li><b>Diploma en Competencias Digitales para la Cultura</b> — UNED (2024)</li>
+							</ul>
+							<h2>Habilidades y competencias</h2>
+							<ul>
+								<li>Gestión y consultoría cultural internacional</li>
+								<li>Curaduría, museografía y mediación de proyectos culturales</li>
+								<li>Investigación académica y aplicada en historia, arte y cultura</li>
+								<li>Desarrollo de contenidos educativos y digitales</li>
+								<li>Coordinación de equipos multidisciplinares</li>
+								<li>Comunicación pública y organización de eventos</li>
+								<li>Data Science: análisis de datos, machine learning, business intelligence, visualización de datos</li>
+								<li>Idiomas: Español (nativo), Inglés (avanzado), Alemán (intermedio), Francés (intermedio)</li>
+							</ul>
+							<h2>Publicaciones y proyectos destacados</h2>
+							<ul>
+								<li><b>Artículos académicos en revistas internacionales:</b> Cuban Studies, Revista de Indias, Relaciones Internacionales, Encartes, Secuencia, The Oxford Research Encyclopedia of Latin American History, entre otras.</li>
+								<li><b>Libros y capítulos colectivos:</b> Penguin Random House, UNAM, Bonilla Artigas, entre otros.</li>
+								<li><b>Proyectos museográficos y curatoriales:</b> Centro Cultural Los Pinos, Instituto Cultural Cabañas, Casa del Lago, Estudios Churubusco.</li>
+								<li><b>Desarrollo de contenidos digitales y educativos:</b> Historicity Online, plataformas de aprendizaje y divulgación.</li>
+							</ul>
+							<h2>Intereses profesionales</h2>
+							<p class="muted">Me apasiona la gestión cultural internacional, la innovación en proyectos de arte y patrimonio, el análisis de datos aplicados a la cultura, la mediación y la consultoría estratégica. Busco contribuir en equipos multidisciplinares que integren humanidades, tecnología y creatividad para transformar el sector cultural.</p>
 						</div>
-						<div class="item">
-							<div class="role">Gestión y mediación cultural · Festival de cine Dokumentale, Berlín</div>
-							<div class="muted">2024</div>
-							<p>Administración, mediación y asuntos editoriales en festival internacional de cine documental.</p>
+						<div id="en" class="tab-content" style="display:none">
+							<h2>Professional Profile</h2>
+							<p class="muted">Cultural manager, consultant, and academic with international experience in research, mediation, administration, and curation of cultural, museographic, and editorial projects. Specialized in cultural history, art, countercultures, digital humanities, and international relations. Currently pursuing a Master’s in Data Science, Big Data & Business Analytics (UCM), expanding skills in data analysis, artificial intelligence, and strategic management of cultural projects.</p>
+							<h2>Professional Experience</h2>
+							<ul>
+								<li><b>Postdoctoral Researcher · Freie Universität Berlin (2025)</b><br>Research and management at the International Graduate College “Temporalities of the Future”. Coordination of interdisciplinary projects and international collaboration.</li>
+								<li><b>Cultural Management & Mediation · Dokumentale Film Festival, Berlin (2024)</b><br>Administration, mediation, and editorial affairs at an international documentary film festival.</li>
+								<li><b>Management, Administration & Research · Freie Universität Berlin (2022–2025)</b><br>Management of cultural projects, coordination of academic and administrative activities.</li>
+								<li><b>Consultant & Curator · Centro Cultural Los Pinos (2021)</b><br>Museographic and curatorial proposals for cultural exhibitions.</li>
+								<li><b>Researcher · CIESAS / CONACyT (2016–2020)</b><br>Research in projects on cultural representations, contemporary history, and cultural policies in Mexico and Latin America.</li>
+								<li><b>Educational Content Developer · Historicity Online (2020–2021)</b><br>Planning and development of content for a digital history learning platform.</li>
+							</ul>
+							<h2>Academic Background</h2>
+							<ul>
+								<li><b>Master’s in Data Science, Big Data & Business Analytics</b> — Universidad Complutense de Madrid (2025–2026, ongoing)</li>
+								<li><b>PhD in History (Honors)</b> — Freie Universität Berlin (2025)</li>
+								<li><b>MA in History (Honors)</b> — UNAM (2021)</li>
+								<li><b>BA in History (Honors)</b> — UNAM (2018)</li>
+								<li><b>Diploma in Digital Competencies for Culture</b> — UNED (2024)</li>
+							</ul>
+							<h2>Skills & Competencies</h2>
+							<ul>
+								<li>International cultural management and consulting</li>
+								<li>Curation, museography, and mediation of cultural projects</li>
+								<li>Academic and applied research in history, art, and culture</li>
+								<li>Development of educational and digital content</li>
+								<li>Coordination of multidisciplinary teams</li>
+								<li>Public communication and event organization</li>
+								<li>Data Science: data analysis, machine learning, business intelligence, data visualization</li>
+								<li>Languages: Spanish (native), English (advanced), German (intermediate), French (intermediate)</li>
+							</ul>
+							<h2>Selected Publications & Projects</h2>
+							<ul>
+								<li><b>Academic articles in international journals:</b> Cuban Studies, Revista de Indias, Relaciones Internacionales, Encartes, Secuencia, The Oxford Research Encyclopedia of Latin American History, among others.</li>
+								<li><b>Books and collective chapters:</b> Penguin Random House, UNAM, Bonilla Artigas, among others.</li>
+								<li><b>Museographic and curatorial projects:</b> Centro Cultural Los Pinos, Instituto Cultural Cabañas, Casa del Lago, Estudios Churubusco.</li>
+								<li><b>Development of digital and educational content:</b> Historicity Online, learning and outreach platforms.</li>
+							</ul>
+							<h2>Professional Interests</h2>
+							<p class="muted">I am passionate about international cultural management, innovation in art and heritage projects, data analysis applied to culture, mediation, and strategic consulting. I seek to contribute to multidisciplinary teams that integrate humanities, technology, and creativity to transform the cultural sector.</p>
 						</div>
-						<div class="item">
-							<div class="role">Gestión, administración e investigación · Freie Universität Berlin</div>
-							<div class="muted">2022–2025</div>
-							<p>Gestión de proyectos culturales, coordinación de actividades académicas y administrativas.</p>
+						<div id="pdf" class="tab-content" style="display:none">
+							<div style="text-align:center; margin-top:40px;">
+								<button onclick="window.print()" style="padding:16px 32px;font-size:1.1rem;background:#111;color:#fff;border:none;border-radius:8px;cursor:pointer;">Descargar CV en PDF</button>
+								<p class="muted" style="margin-top:18px;">Haz clic en el botón para descargar una versión imprimible del CV.</p>
+							</div>
 						</div>
-						<div class="item">
-							<div class="role">Consultor y curador · Centro Cultural Los Pinos</div>
-							<div class="muted">2021</div>
-							<p>Propuesta museográfica y curatorial para exposiciones culturales.</p>
+						<div id="portfolio" class="tab-content" style="display:none">
+							<h2>Portafolio / Portfolio</h2>
+							<div style="display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));margin-top:24px;">
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Los_Pinos_CDMX.jpg" alt="Centro Cultural Los Pinos" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Centro Cultural Los Pinos</h3>
+									<p>Propuesta museográfica y curatorial para exposiciones culturales.</p>
+									<a href="https://www.gob.mx/los-pinos" target="_blank">Ver sitio oficial</a>
+								</div>
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Estudios_Churubusco.jpg" alt="Estudios Churubusco" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Estudios Churubusco</h3>
+									<p>Investigación y curaduría para la exposición “La fábrica del cine”.</p>
+									<a href="https://www.churubusco.com.mx/" target="_blank">Ver sitio oficial</a>
+								</div>
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Casa_del_Lago_UNAM.jpg" alt="Casa del Lago UNAM" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Casa del Lago UNAM</h3>
+									<p>Organización de actividades de difusión y mesas de debate en torno a la exposición “Vanguardia y Desacato”.</p>
+									<a href="https://casadellago.unam.mx/" target="_blank">Ver sitio oficial</a>
+								</div>
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Instituto_Cultural_Caba%C3%B1as.jpg" alt="Instituto Cultural Cabañas" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Instituto Cultural Cabañas</h3>
+									<p>Investigación para la exposición “Mathias Goeritz y la Renovación Religiosa”.</p>
+									<a href="https://cabanas.jalisco.gob.mx/" target="_blank">Ver sitio oficial</a>
+								</div>
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Documentary_Film_Festival_Berlin.jpg" alt="Festival Dokumentale Berlin" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Festival Dokumentale Berlin</h3>
+									<p>Mediación y gestión cultural en festival internacional de cine documental.</p>
+									<a href="https://dokumentale-berlin.de/" target="_blank">Ver sitio oficial</a>
+								</div>
+								<div style="background:#fafafa;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+									<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Historicity_Online.jpg" alt="Historicity Online" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+									<h3 style="margin:12px 0 6px 0;">Historicity Online</h3>
+									<p>Desarrollo de contenidos educativos digitales para plataforma de aprendizaje de historia.</p>
+									<a href="https://historicity.online/" target="_blank">Ver sitio oficial</a>
+								</div>
+							</div>
 						</div>
-						<div class="item">
-							<div class="role">Investigador · CIESAS / CONACyT</div>
-							<div class="muted">2016–2020</div>
-							<p>Investigación en proyectos sobre representaciones culturales, historia contemporánea y políticas culturales en México y América Latina.</p>
-						</div>
-						<div class="item">
-							<div class="role">Desarrollo de contenidos educativos · Historicity Online</div>
-							<div class="muted">2020–2021</div>
-							<p>Planeación y desarrollo de contenidos para plataforma digital de aprendizaje de historia.</p>
-						</div>
-					</div>
-				</section>
-
-				<section class="section">
-					<h2>Formación académica</h2>
-					<div class="list">
-						<div class="item">
-							<div class="role">Máster en Data Science, Big Data & Business Analytics</div>
-							<div class="muted">Universidad Complutense de Madrid · 2025–2026 (en curso)</div>
-							<p>Competencias en análisis de datos, machine learning, inteligencia artificial, business intelligence y gestión de proyectos tecnológicos.</p>
-						</div>
-						<div class="item">
-							<div class="role">Doctorado en Historia (Honores)</div>
-							<div class="muted">Freie Universität Berlin · 2025</div>
-							<p>Especialización en historia cultural, arte, cine y política en Iberoamérica.</p>
-						</div>
-						<div class="item">
-							<div class="role">Maestría en Historia (Honores)</div>
-							<div class="muted">UNAM · 2021</div>
-						</div>
-						<div class="item">
-							<div class="role">Licenciatura en Historia (Honores)</div>
-							<div class="muted">UNAM · 2018</div>
-						</div>
-						<div class="item">
-							<div class="role">Diploma en Competencias Digitales para la Cultura</div>
-							<div class="muted">UNED · 2024</div>
-						</div>
-					</div>
-				</section>
-
-				<section class="section">
-					<h2>Habilidades y competencias</h2>
-					<ul class="muted">
-						<li>Gestión y consultoría cultural internacional</li>
-						<li>Curaduría, museografía y mediación de proyectos culturales</li>
-						<li>Investigación académica y aplicada en historia, arte y cultura</li>
-						<li>Desarrollo de contenidos educativos y digitales</li>
-						<li>Coordinación de equipos multidisciplinares</li>
-						<li>Comunicación pública y organización de eventos</li>
-						<li>Data Science: análisis de datos, machine learning, business intelligence, visualización de datos</li>
-						<li>Idiomas: Español (nativo), Inglés (avanzado), Alemán (intermedio), Francés (intermedio)</li>
-					</ul>
-				</section>
-
-				<section class="section">
-					<h2>Publicaciones y proyectos destacados</h2>
-					<div class="list">
-						<div class="item">
-							<div class="role">Artículos académicos en revistas internacionales</div>
-							<div class="muted">Cuban Studies, Revista de Indias, Relaciones Internacionales, Encartes, Secuencia, The Oxford Research Encyclopedia of Latin American History, entre otras</div>
-						</div>
-						<div class="item">
-							<div class="role">Libros y capítulos colectivos</div>
-							<div class="muted">Penguin Random House, UNAM, Bonilla Artigas, entre otros</div>
-						</div>
-						<div class="item">
-							<div class="role">Proyectos museográficos y curatoriales</div>
-							<div class="muted">Centro Cultural Los Pinos, Instituto Cultural Cabañas, Casa del Lago, Estudios Churubusco</div>
-						</div>
-						<div class="item">
-							<div class="role">Desarrollo de contenidos digitales y educativos</div>
-							<div class="muted">Historicity Online, plataformas de aprendizaje y divulgación</div>
-						</div>
-					</div>
-				</section>
-
-				<section class="section">
-					<h2>Intereses profesionales</h2>
-					<p class="muted">Me apasiona la gestión cultural internacional, la innovación en proyectos de arte y patrimonio, el análisis de datos aplicados a la cultura, la mediación y la consultoría estratégica. Busco contribuir en equipos multidisciplinares que integren humanidades, tecnología y creatividad para transformar el sector cultural.</p>
-				</section>
-
-				<footer>
-					<div>Más información, publicaciones y colaboraciones: <a href="mailto:j.s.rebolledo33@gmail.com">j.s.rebolledo33@gmail.com</a> · <a href="https://fu-berlin.academia.edu/JuanAlbertoSalazarRebolledo" target="_blank">Academia.edu</a></div>
-				</footer>
 			</div>
 		</div>
 	</body>
